@@ -1,5 +1,6 @@
 import { Controller, Get, Param, Post, Body, HttpCode, HttpStatus, Res, Query, Patch, Delete} from '@nestjs/common';
 import { CoffeesService } from './coffees.service';
+import { CreateCoffeeDto } from './dto/create-coffee.dto/create-coffee.dto';
 
 @Controller('coffees')
 export class CoffeesController {
@@ -36,7 +37,7 @@ export class CoffeesController {
 
 
     @Post()
-    create(@Body() body) {
+    create(@Body() body : CreateCoffeeDto) {
         return this.coffeeService.create(body)
     }
 
