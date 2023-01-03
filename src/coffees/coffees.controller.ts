@@ -1,12 +1,17 @@
-import { Controller, Get, Param, Post, Body, HttpCode, HttpStatus, Res, Query } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, HttpCode, HttpStatus, Res, Query, Patch, Delete} from '@nestjs/common';
+import { CoffeesService } from './coffees.service';
 
 @Controller('coffees')
 export class CoffeesController {
 
-    @Get('array')
+    constructor(private readonly coffeeService: CoffeesService) {
+
+    }
+
+    @Get()
     findAll(@Query() pageQuery) {
-        const { limit , offset } = pageQuery;
-        return ['abc', 'def', limit, offset]
+        //const {limit, offset} = pageQuery;
+        return this.coffeeService.findAll();
     }
 
     /**
@@ -14,9 +19,9 @@ export class CoffeesController {
      * @param params 
      * @returns 
      */
-    @Get('obj/:id')
-    findOne(@Param() params) {
-        return `The id you passed is ${params.id}`;
+    @Get(':id')
+    findOne(@Param('id') id :string) {
+        return this.coffeeService.findOne(id)
     }
 
 
@@ -31,9 +36,19 @@ export class CoffeesController {
 
 
     @Post()
-    @HttpCode(HttpStatus.GONE)
-    create(@Body('name') body) {
-        return body;
+    create(@Body() body) {
+        return this.coffeeService.create(body)
+    }
+
+    @Patch(':id')
+    update(@Param('id') id :string, @Body() body) {
+        return this.coffeeService.update(id, body)
+    }
+
+
+    @Delete(':id')
+    delete(@Param('id') id :string) {
+        return this.coffeeService.remove(id)
     }
 
 }
