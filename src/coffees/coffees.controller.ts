@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, HttpCode, HttpStatus, Res } from '@nestjs/common';
 
 @Controller('coffees')
 export class CoffeesController {
@@ -7,4 +7,32 @@ export class CoffeesController {
     findAll() {
         return ['abc', 'def']
     }
+
+    /**
+     * dynamic route param
+     * @param params 
+     * @returns 
+     */
+    @Get('obj/:id')
+    findOne(@Param() params) {
+        return `The id you passed is ${params.id}`;
+    }
+
+
+    /**
+     * note recommend nest js will also generate status code
+     * @param response
+     */
+    @Get('two')
+    findTwo(@Res() response) {
+        response.status(200).send("hi ,how are you")
+    }
+
+
+    @Post()
+    @HttpCode(HttpStatus.GONE)
+    create(@Body('name') body) {
+        return body;
+    }
+
 }
