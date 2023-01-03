@@ -1,11 +1,12 @@
-import { Controller, Get, Param, Post, Body, HttpCode, HttpStatus, Res } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, HttpCode, HttpStatus, Res, Query } from '@nestjs/common';
 
 @Controller('coffees')
 export class CoffeesController {
 
     @Get('array')
-    findAll() {
-        return ['abc', 'def']
+    findAll(@Query() pageQuery) {
+        const { limit , offset } = pageQuery;
+        return ['abc', 'def', limit, offset]
     }
 
     /**
