@@ -34,7 +34,7 @@ export class CoffeesService {
     update(id: string, dto: any) {
         const coffee = this.findOne(id);
         if (coffee) {
-            //how to copy attr from dto?, any type is convinient, but not safe. anyway you can implement a crud quicky by this.
+            //TODO how to copy attr from dto?, any type is convinient, but not safe. anyway you can implement a crud quicky by this.
         }
     }
 
