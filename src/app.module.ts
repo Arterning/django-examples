@@ -7,16 +7,17 @@ import { ShopCartModule } from './shop-cart/shop-cart.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Coffee } from './coffees/entities/coffee.entity';
 import { Flavor } from './coffees/entities/flavor.entity';
+import 'dotenv/config';
 
 @Module({
   imports: [ShopCartModule,
     TypeOrmModule.forFeature([Coffee, Flavor]),
     TypeOrmModule.forRoot({
       type:'postgres',
-      host:'1.12.67.61',
+      host:process.env.HOST,
       port:5432,
-      username:'strapi',
-      password:'',
+      username:process.env.USER,
+      password: process.env.PASS,
       database:'coffee',
       autoLoadEntities:true,
       synchronize:true,
