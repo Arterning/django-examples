@@ -7,11 +7,12 @@ import { ShopCartModule } from './shop-cart/shop-cart.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Coffee } from './coffees/entities/coffee.entity';
 import { Flavor } from './coffees/entities/flavor.entity';
+import { Event } from './events/entities/event.entity';
 import 'dotenv/config';
 
 @Module({
   imports: [ShopCartModule,
-    TypeOrmModule.forFeature([Coffee, Flavor]),
+    TypeOrmModule.forFeature([Coffee, Flavor, Event]),
     TypeOrmModule.forRoot({
       type:'postgres',
       host:process.env.HOST,
