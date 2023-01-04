@@ -28,7 +28,7 @@ export class CoffeesService {
 
     create(dto : CreateCoffeeDto) {
         //TODO generate id
-        const coffee = this.coffeeRepository.create(dto);
+        const coffee = this.coffeeRepository.save(dto);
         return coffee;
     }
 
