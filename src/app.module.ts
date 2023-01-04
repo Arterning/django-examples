@@ -4,9 +4,19 @@ import { AppService } from './app.service';
 import { CoffeesController } from './coffees/coffees.controller';
 import { CoffeesService } from './coffees/coffees.service';
 import { ShopCartModule } from './shop-cart/shop-cart.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
-  imports: [ShopCartModule],
+  imports: [ShopCartModule, TypeOrmModule.forRoot({
+    type:'postgres',
+    host:'1.12.67.61',
+    port:5432,
+    username:'strapi',
+    password:'',
+    database:'coffee',
+    autoLoadEntities:true,
+    synchronize:true,
+  })],
   controllers: [AppController, CoffeesController],
   providers: [AppService, CoffeesService],
 })
