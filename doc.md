@@ -2,4 +2,6 @@
 
 ```shell
 nest g class coffees/entities/flavor.entity --no-spec
+
+nest g class common/dto/pagination-query.dto --no-spec
 ```
