@@ -1,4 +1,6 @@
 import { HttpException, Injectable, HttpStatus, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm/dist/common';
+import { Repository } from 'typeorm/repository/Repository';
 import { CreateCoffeeDto } from './dto/create-coffee.dto/create-coffee.dto';
 import {UpdateCoffeeDto } from './dto/update-coffee.dto/update-coffee.dto';
 import { Coffee } from './entities/coffee.entity';
@@ -6,23 +8,18 @@ import { Coffee } from './entities/coffee.entity';
 @Injectable()
 export class CoffeesService {
 
-    private coffeesMock :Coffee[]= [
-        {
-            id: 1,
-            name:'hils',
-            brand: 'ning brand',
-            flavors: ['sweety']
-        }
-    ];
 
+    constructor(@InjectRepository(Coffee) private readonly coffeeRepository:Repository<Coffee>) {
 
-    findAll() {
-        return this.coffeesMock;
     }
 
-    findOne(id: string) {
+    findAll() {
+        return this.coffeeRepository.find();
+    }
+
+    async findOne(id: string) {
         //throw 'a random error'
-        const coffee = this.coffeesMock.find(item => item.id === +id);
+        const coffee = await this.coffeeRepository.findOneById(id);
         if (!coffee) {
             throw new NotFoundException(`Coffee with id ${id} not found`)
         }
@@ -31,31 +28,37 @@ export class CoffeesService {
 
     create(dto : CreateCoffeeDto) {
         //TODO generate id
-        this.coffeesMock.push({
-            id: 666,
-            name:dto.name,
-            brand: dto.brand,
-            flavors: dto.flavors
-        })
-        return dto;
+        const coffee = this.coffeeRepository.create(dto);
+        return coffee;
     }
 
-    update(id: string, dto: UpdateCoffeeDto) {
-        const coffee = this.findOne(id);
+    async update(id: string, dto: UpdateCoffeeDto) {
+        const coffee = await this.coffeeRepository.preload({
+            id: +id,
+            ...dto
+        });
+        if (!coffee) {
+            throw new NotFoundException(`Coffee with id ${id} not found`)
+        }
         if (coffee) {
-            //TODO how to copy attr from dto?, any type is convinient, but not safe. anyway you can implement a crud quicky by this.
-            coffee.brand = dto.brand;
-            coffee.name = dto.name;
-            coffee.flavors = dto.flavors;
+            this.coffeeRepository.save(dto);
         }
     }
 
-    remove(id:string) {
-        const coffee = this.findOne(id);
+    async remove(id:string) {
+        const coffee = await this.findOne(id);
         if (coffee) {
-            this.coffeesMock = this.coffeesMock.filter(e => e.id !== +id);
+            this.coffeeRepository.remove(coffee);
         }
     }
+
+
+    // oldRemove() {
+    //     const index = array.findIndex(item => item.id === id);
+    //     if (index >= 0) {
+    //         array.splice(index, 1);
+    //     }
+    // }
 
 
 }
