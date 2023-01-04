@@ -120,6 +120,8 @@ export class CoffeesService {
 
             await queryRunner.manager.save(coffee);
             await queryRunner.manager.save(event);
+            //TODO 这里实际上并没有插入成功 有时间看看怎么回事
+            
         } catch (error) {
             await queryRunner.rollbackTransaction();
         } finally {

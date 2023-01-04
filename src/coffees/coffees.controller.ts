@@ -59,13 +59,11 @@ export class CoffeesController {
 
     @Post('recommend/:id')
     async rawTransaction(@Param('id') id :string) {
-        console.log(id);
-        
         const coffee = await this.coffeeService.findOne(id);
-        console.log(coffee);
-        
-        this.coffeeService.recommendCoffee(coffee);
-        return 'insert ok !';
+        await this.coffeeService.recommendCoffee(coffee);
+        return {
+            message: '风骚大波妹'
+        };
     }
 
 }
