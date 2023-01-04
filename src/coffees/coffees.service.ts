@@ -33,7 +33,10 @@ export class CoffeesService {
     async findOne(id: string) {
         //throw 'a random error'
         const coffee = await this.coffeeRepository.findOne({
-            relations:['flavors']
+            relations:['flavors'],
+            where: {
+                id: Number(id)
+            }
         });
         if (!coffee) {
             throw new NotFoundException(`Coffee with id ${id} not found`)

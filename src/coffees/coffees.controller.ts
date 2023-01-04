@@ -55,4 +55,17 @@ export class CoffeesController {
         return this.coffeeService.remove(id)
     }
 
+
+
+    @Post('recommend/:id')
+    async rawTransaction(@Param('id') id :string) {
+        console.log(id);
+        
+        const coffee = await this.coffeeService.findOne(id);
+        console.log(coffee);
+        
+        this.coffeeService.recommendCoffee(coffee);
+        return 'insert ok !';
+    }
+
 }
