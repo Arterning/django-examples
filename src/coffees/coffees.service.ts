@@ -37,6 +37,7 @@ export class CoffeesService {
             brand: dto.brand,
             flavors: dto.flavors
         })
+        return dto;
     }
 
     update(id: string, dto: UpdateCoffeeDto) {
