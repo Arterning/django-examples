@@ -10,3 +10,9 @@ nest g class events/entities/event.entity --no-spec
 
 npx typeorm migration:create -n CoffeeRefactor
 ```
+
+
+# 启动项目
+```shell
+npm run start:dev
+```
