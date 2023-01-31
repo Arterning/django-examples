@@ -9,9 +9,10 @@ import { Coffee } from './coffees/entities/coffee.entity';
 import { Flavor } from './coffees/entities/flavor.entity';
 import { Event } from './events/entities/event.entity';
 import 'dotenv/config';
+import { CoffeeModule } from './coffees/cofees.module';
 
 @Module({
-  imports: [ShopCartModule,
+  imports: [ShopCartModule,CoffeeModule
     TypeOrmModule.forFeature([Coffee, Flavor, Event]),
     TypeOrmModule.forRoot({
       type:'postgres',
@@ -23,7 +24,7 @@ import 'dotenv/config';
       autoLoadEntities:true,
       synchronize:true,
   })],
-  controllers: [AppController, CoffeesController],
-  providers: [AppService, CoffeesService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
