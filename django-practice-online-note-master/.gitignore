@@ -1,0 +1,5 @@
+.idea
+/user/__pycache__/
+/online_note/__pycache__/
+/note/__pycache__/
+/index/__pycache__/
