@@ -18,6 +18,22 @@ Rust 开发者通常会将该目录加入 PATH 环境变量中。在安装过程
 echo "export PATH=$PATH:~/.cargo/bin"
 ```
 
+# cargo 使用
+
+如果你想在 Rust 环境中运行一个使用 Cargo 管理的项目，你可以执行以下步骤：
+
+安装 Rust：如果你尚未安装 Rust，请在官网上下载安装包并安装：https://www.rust-lang.org/tools/install 。
+
+克隆代码：从代码仓库克隆项目代码，例如从 GitHub 上。
+
+进入项目目录：使用命令行工具或终端程序，进入项目目录。
+
+构建项目：在项目目录中运行命令 cargo build 以构建项目。
+
+运行项目：在项目目录中运行命令 cargo run 来运行项目。
+
+如果项目构建和运行成功，你将在命令行终端看到项目的输出结果。如果构建或运行过程中出现错误，请检查错误信息并进行必要的调整。
+
 # cargo 报错 linker `cc` not found 如何解决
 
 如果你在使用 cargo 构建 Rust 项目时遇到“linker cc not found”错误，这可能是因为系统缺少 C 语言编译器（即，gcc）。为解决此问题，请在你的系统上安装 GCC。
