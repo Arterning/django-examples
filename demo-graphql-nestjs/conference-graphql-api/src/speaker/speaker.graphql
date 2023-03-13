@@ -1,0 +1,34 @@
+type Query {
+    speakers: [Speaker]!
+    speaker(id: Int): Speaker!
+}
+
+type Mutation {
+    createSpeaker(speaker: SpeakerInput): Speaker
+}
+
+type Speaker @cacheControl(maxAge: 240) {
+    id: Int!
+    name: String!
+    bio: String!
+    phonenumber: String!
+    companyname: String!
+    companytitle: String
+    companywebsite: String
+    blog: String
+    website: String
+    twitter: String
+    imageUrl: String
+}
+
+input SpeakerInput {
+    name: String!
+    bio: String!
+    phonenumber: String!
+    companyname: String!
+    companytitle: String
+    companywebsite: String
+    blog: String
+    website: String
+    twitter: String
+}
