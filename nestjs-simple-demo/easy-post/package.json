@@ -4,7 +4,7 @@
     "description": "Easy post system.",
     "main": "main.ts",
     "scripts": {
-        "start": "ts-node -r tsconfig-paths/register src/main.ts",
+        "start": "nest start",
         "start:watch": "nodemon",
         "debug": "node --inspect-brk -r ts-node/register src/main.ts",
         "debug:watch": "nodemon --config nodemon-debug.json",
