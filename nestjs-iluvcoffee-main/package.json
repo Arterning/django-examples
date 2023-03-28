@@ -9,7 +9,6 @@
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "prestart": "npm run local-db-start",
     "start": "nest start",
     "start:dev": "npm run start -- --watch",
     "start:debug": "nest start --debug --watch",
