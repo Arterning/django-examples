@@ -10,7 +10,6 @@ import {
   Query,
   UsePipes,
   ValidationPipe,
-  // Res,
 } from '@nestjs/common';
 import { CoffeesService } from './coffees.service';
 import { CreateCoffeeDto } from './dto/create-coffee.dto';
@@ -31,17 +30,7 @@ export class CoffeesController {
     @Inject(COFFEE_BRANDS) private readonly coffeeBrands: string[],
   ) {}
 
-  // basic GET
-  // @Get('flavors')
-  // findAll() {
-  //   return 'this action returns all coffees';
-  // }
 
-  // caveman implementation - gives us access to the underlying library implementation
-  // @Get('flavors')
-  // findAll(@Res() response) {
-  //   response.status(200).send('this action returns all coffees');
-  // }
 
   // GET with query
   @ApiResponse({ status: 403, description: 'Forbidden.' })
