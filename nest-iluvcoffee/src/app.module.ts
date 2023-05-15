@@ -11,6 +11,7 @@ import { appConfig } from './config/app.config';
 import { APP_PIPE } from '@nestjs/core';
 import { CommonModule } from './common/common.module';
 import { FreeModule } from './free/free.module';
+import { LoveModule } from './love/love.module';
 
 @Module({
   imports: [
@@ -41,6 +42,7 @@ import { FreeModule } from './free/free.module';
     DatabaseModule,
     CommonModule,
     FreeModule,
+    LoveModule,
   ],
   controllers: [AppController],
   providers: [
