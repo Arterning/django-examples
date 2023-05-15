@@ -9,6 +9,7 @@ export class LoveService {
   private mock: Love[] = []
   
   create(createLoveDto: CreateLoveDto) {
+    console.log('create')
     return 'This action adds a new love';
   }
 
