@@ -1,0 +1,52 @@
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
+import { INestApplication, ValidationPipe } from '@nestjs/common';
+import { HttpExceptionFilter } from './common/filters/http-exception.filter';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+// import { WrapResponseInterceptor } from './common/interceptors/wrap-response.interceptor';
+// import { TimeoutInterceptor } from './common/interceptors/timeout.interceptor';
+
+function applyBuildingBlocksToApp(app: INestApplication): void {
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      forbidNonWhitelisted: true,
+      transform: true,
+      transformOptions: {
+        enableImplicitConversion: true,
+      },
+    }),
+  );
+  app.useGlobalFilters(new HttpExceptionFilter());
+  app
+    .useGlobalInterceptors
+    // new WrapResponseInterceptor(), // to add the wrap response interceptor
+    // new TimeoutInterceptor(), // to add the TimeoutInterceptor
+    ();
+}
+
+declare const module: any;
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+  applyBuildingBlocksToApp(app);
+
+  // setup basic swagger
+  const options = new DocumentBuilder()
+    .setTitle('Iluvcoffee')
+    .setDescription('Coffee application')
+    .setVersion('1.0')
+    .build();
+  const document = SwaggerModule.createDocument(app, options);
+  SwaggerModule.setup('api', app, document);
+
+  await app.listen(3000);
+
+  if (module.hot) {
+    module.hot.accept();
+    module.hot.dispose(() => app.close());
+  }
+  
+
+}
+bootstrap();
