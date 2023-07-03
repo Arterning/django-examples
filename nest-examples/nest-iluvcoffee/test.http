@@ -1,0 +1,30 @@
+### get all coffes
+GET http://localhost:3000/coffees
+
+### get all coffes
+GET http://localhost:3000/coffees/1
+
+### PATCH coffes
+PATCH http://localhost:3000/coffees/2
+Content-Type: application/json
+
+{
+  "name": "xxx66",
+  "brand": "good",
+  "flavors": ["sweet", "cool"]
+}
+
+
+
+### DELETE coffes
+DELETE http://localhost:3000/coffees/2
+
+### post coffee
+POST http://localhost:3000/coffees
+Content-Type: application/json
+
+{
+  "name": "xxx",
+  "brand": "good",
+  "flavors": ["sweet", "cool"]
+}

@@ -4,6 +4,6 @@ import { LoveController } from './love.controller';
 
 @Module({
   controllers: [LoveController],
-  providers: [LoveService]
+  providers: [LoveService],
 })
 export class LoveModule {}

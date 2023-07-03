@@ -30,8 +30,6 @@ export class CoffeesController {
     @Inject(COFFEE_BRANDS) private readonly coffeeBrands: string[],
   ) {}
 
-
-
   // GET with query
   @ApiResponse({ status: 403, description: 'Forbidden.' })
   @Public()

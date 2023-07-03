@@ -5,11 +5,10 @@ import { Love } from './entities/love.entity';
 
 @Injectable()
 export class LoveService {
+  private mock: Love[] = [];
 
-  private mock: Love[] = []
-  
   create(createLoveDto: CreateLoveDto) {
-    console.log('create')
+    console.log('create');
     return 'This action adds a new love';
   }
 

@@ -1,10 +1,9 @@
 export class FreeEntity {
+  address: string;
 
-    address:String;
+  score: string;
 
-    score:String;
-    
-    time: String;
+  time: string;
 
-    girl: String;
+  girl: string;
 }

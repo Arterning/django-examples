@@ -1,16 +1,16 @@
 import {
-    Body,
-    Controller,
-    Delete,
-    Get,
-    Inject,
-    Param,
-    Patch,
-    Post,
-    Query,
-    UsePipes,
-    ValidationPipe,
-  } from '@nestjs/common';
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Inject,
+  Param,
+  Patch,
+  Post,
+  Query,
+  UsePipes,
+  ValidationPipe,
+} from '@nestjs/common';
 import { PostFreeDto } from './dto/post-free.dto';
 import { FreeService } from './free.service';
 import { ApiTags } from '@nestjs/swagger';
@@ -18,10 +18,7 @@ import { ApiTags } from '@nestjs/swagger';
 @ApiTags('free')
 @Controller('free')
 export class FreeController {
-
-  constructor(private readonly freeService:FreeService) {
-
-  }
+  constructor(private readonly freeService: FreeService) {}
 
   @Get('findAll')
   findAll() {
@@ -33,11 +30,8 @@ export class FreeController {
     this.freeService.create(request);
   }
 
-
   @Patch('patch')
-  patch(@Body() request: PostFreeDto){
+  patch(@Body() request: PostFreeDto) {
     this.freeService.update(request);
   }
-
-
 }

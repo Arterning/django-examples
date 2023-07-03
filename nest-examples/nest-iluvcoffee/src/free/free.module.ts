@@ -4,6 +4,6 @@ import { FreeService } from './free.service';
 
 @Module({
   controllers: [FreeController],
-  providers: [FreeService]
+  providers: [FreeService],
 })
 export class FreeModule {}
