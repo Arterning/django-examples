@@ -1,0 +1,22 @@
+{
+  "name": "hello-fastify",
+  "version": "1.0.0",
+  "description": "* react * vue * angular * graphql * webpack * html-css * vite",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arterning/ui-code-examples.git"
+  },
+  "author": "ning",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Arterning/ui-code-examples/issues"
+  },
+  "homepage": "https://github.com/Arterning/ui-code-examples#readme",
+  "dependencies": {
+    "fastify": "^4.15.0"
+  }
+}

@@ -1,0 +1,53 @@
+{
+    "funds":[
+        {
+            "id": 1,
+            "fundName": "private equity fund A",
+            "inceptionDate": "2010-01-01",
+            "periodType": "Monthly"
+        },
+        {
+            "id": 2,
+            "fundName": "private equity fund B",
+            "inceptionDate": "2010-01-01",
+            "periodType": "Monthly"
+        }
+    ],
+    "fund-accounts": [
+        {
+            "id": 1,
+            "name": "boy next Door",
+            "startDate": "2018-01-01",
+            "fund": {
+                "id": 1,
+                "fundName": "private equity fund A",
+                "inceptionDate": "2010-01-01",
+                "periodType": "Monthly"
+            },
+            "transaction": [
+                {
+                    "date": "2013-02-03",
+                    "amount": 20000,
+                    "type": "subscription"
+                }
+            ]
+        }
+    ],
+    "account-transactions": [
+        {
+            "date": "2013-02-03",
+            "amount": 20000,
+            "type": "subscription"
+        },
+        {
+            "date": "2013-02-13",
+            "amount": 350,
+            "type": "transfer"
+        },
+        {
+            "date": "2013-02-15",
+            "amount": 650,
+            "type": "redeem"
+        }
+    ]
+}
